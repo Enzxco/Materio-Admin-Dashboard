@@ -1,15 +1,15 @@
 from flask import Flask, send_from_directory
-import os
 
-app = Flask(__name__, static_folder='javascript-version/dist')
+app = Flask(__name__, static_folder='javascript-version/dist', static_url_path='')
 
 @app.route('/')
-def serve_vue():
+def index():
     return send_from_directory(app.static_folder, 'index.html')
 
-@app.route('/<path:path>')
-def serve_files(path):
-    return send_from_directory(app.static_folder, path)
+# Optional: handle Vue routes
+@app.errorhandler(404)
+def not_found(e):
+    return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
