@@ -17,6 +17,5 @@ declare module 'vue' {
     SearchDialog: typeof import('./src/components/SearchDialog.vue')['default']
     ThemeSwitcher: typeof import('./src/@core/components/ThemeSwitcher.vue')['default']
     UpgradeToPro: typeof import('./src/components/UpgradeToPro.vue')['default']
-    VueApexCharts: typeof import('vue3-apexcharts')['default']
   }
 }
